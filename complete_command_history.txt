@@ -1,0 +1,50 @@
+echo # SAMPLE 7: Map_23 (SRR15209119) - COMPLETED %date% %time% >> commands.txt
+echo File 1: 9.59 MB >> commands.txt
+echo File 2: 9.89 MB >> commands.txt
+echo. >> commands.txt
+echo Map_23,SRR15209119,Mozambique,19.5MB,? COMPLETE >> sample_progress_clean.csv
+type sample_progress_clean.csv
+echo # SAMPLE 8: Map_22 (SRR15209118) - Started %date% %time% >> commands.txt
+echo curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/018/SRR15209118/SRR15209118_1.fastq.gz >> commands.txt
+echo curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/018/SRR15209118/SRR15209118_2.fastq.gz >> commands.txt
+echo. >> commands.txt
+echo Map_22,SRR15209118,Mozambique,,?? DOWNLOADING >> sample_progress_clean.csv
+cd C:\Users\User\metagenomics_project
+echo # SAMPLE 8: Map_22 (SRR15209118) - COMPLETED %date% %time% >> commands.txt
+echo File 1: 8.88 MB >> commands.txt
+echo File 2: 8.87 MB >> commands.txt
+echo. >> commands.txt
+echo Map_22,SRR15209118,Mozambique,17.8MB,? COMPLETE >> sample_progress_clean.csv
+type sample_progress_clean.csv
+echo # SAMPLE 9: Map_21 (SRR15209117) - Started %date% %time% >> commands.txt
+echo curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/017/SRR15209117/SRR15209117_1.fastq.gz >> commands.txt
+echo curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/017/SRR15209117/SRR15209117_2.fastq.gz >> commands.txt
+echo. >> commands.txt
+echo Map_21,SRR15209117,Mozambique,,?? DOWNLOADING >> sample_progress_clean.csv
+cd C:\Users\User\metagenomics_project
+echo # SAMPLE 9: Map_21 (SRR15209117) - COMPLETED %date% %time% >> commands.txt
+echo File 1: 7.75 MB >> commands.txt
+echo File 2: 8.01 MB >> commands.txt
+echo. >> commands.txt
+echo Map_21,SRR15209117,Mozambique,15.8MB,? COMPLETE >> sample_progress_clean.csv
+type sample_progress_clean.csv
+echo # SAMPLE 10: Map_20 (SRR15209116) - Started %date% %time% >> commands.txt
+echo curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/016/SRR15209116/SRR15209116_1.fastq.gz >> commands.txt
+echo curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/016/SRR15209116/SRR15209116_2.fastq.gz >> commands.txt
+echo. >> commands.txt
+echo Map_20,SRR15209116,Mozambique,,?? DOWNLOADING >> sample_progress_clean.csv
+cd C:\Users\User\metagenomics_project
+echo # SAMPLE 10: Map_20 (SRR15209116) - COMPLETED %date% %time% >> commands.txt
+echo File sizes as they appear >> commands.txt
+echo. >> commands.txt
+echo Map_20,SRR15209116,Mozambique,[SIZE],? COMPLETE >> sample_progress_clean.csv
+cd C:\Users\User\metagenomics_project
+echo # SAMPLE 10: Map_20 (SRR15209116) - COMPLETED %date% %time% >> commands.txt
+echo File 1: 8,015,730 bytes >> commands.txt
+echo File 2: 8,425,908 bytes >> commands.txt
+echo. >> commands.txt
+echo Map_20,SRR15209116,Mozambique,16.4MB,? COMPLETE >> sample_progress_clean.csv
+type sample_progress_clean.csv
+cd C:\Users\User\metagenomics_project
+# Save complete command history to a file
+doskey /history > complete_command_history.txt
