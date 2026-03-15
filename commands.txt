@@ -1,0 +1,80 @@
+# Commands used in this project 
+Started on: Sun 03/15/2026 17:20:59.90 
+================================ 
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/025/SRR15209125/SRR15209125_1.fastq.gz 
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/025/SRR15209125/SRR15209125_1.fastq.gz 
+# Download commands for Mozambique samples 
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/025/SRR15209125/SRR15209125_1.fastq.gz 
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/025/SRR15209125/SRR15209125_2.fastq.gz 
+# SAMPLE 2: Map_28 (SRR15209124) - Started Sun 03/15/2026 17:39:16.81 
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/024/SRR15209124/SRR15209124_1.fastq.gz 
+curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/024/SRR15209124/SRR15209124_2.fastq.gz 
+ 
+# SAMPLE 2: Map_28 (SRR15209124) - COMPLETED Sun 03/15/2026 17:49:16.09 
+Both files downloaded successfully 
+File 1: 3.8 MB 
+File 2: 3.8 MB 
+ 
+# SAMPLE 3: Map_27 (SRR15209123) - COMPLETED 2026-03-15 
+File 1: 10.48 MB 
+File 2: 11.46 MB 
+ 
+# SAMPLE 4: Map_26 (SRR15209122) - Started 2026-03-15 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/022/SRR15209122/SRR15209122_1.fastq.gz 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/022/SRR15209122/SRR15209122_2.fastq.gz 
+ 
+# SAMPLE 4: Map_26 (SRR15209122) - COMPLETED Sun 03/15/2026 17:57:01.90 
+File 1: 6.74 MB 
+File 2: 7.30 MB 
+ 
+# SAMPLE 5: Map_25 (SRR15209121) - Started Sun 03/15/2026 17:57:49.43 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/021/SRR15209121/SRR15209121_1.fastq.gz 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/021/SRR15209121/SRR15209121_2.fastq.gz 
+ 
+# SAMPLE 5: Map_25 (SRR15209121) - COMPLETED Sun 03/15/2026 17:58:54.02 
+File 1: 4.80 MB 
+File 2: 5.05 MB 
+ 
+# SAMPLE 6: Map_24 (SRR15209120) - Started Sun 03/15/2026 17:59:40.12 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/020/SRR15209120/SRR15209120_1.fastq.gz 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/020/SRR15209120/SRR15209120_2.fastq.gz 
+ 
+# SAMPLE 6: Map_24 (SRR15209120) - COMPLETED Sun 03/15/2026 18:01:21.88 
+File 1: 9.64 MB 
+File 2: 10.08 MB 
+ 
+# SAMPLE 7: Map_23 (SRR15209119) - Started Sun 03/15/2026 18:01:53.17 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/019/SRR15209119/SRR15209119_1.fastq.gz 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/019/SRR15209119/SRR15209119_2.fastq.gz 
+ 
+# SAMPLE 7: Map_23 (SRR15209119) - COMPLETED Sun 03/15/2026 18:05:06.35 
+File 1: 9.59 MB 
+File 2: 9.89 MB 
+ 
+# SAMPLE 8: Map_22 (SRR15209118) - Started Sun 03/15/2026 18:06:14.41 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/018/SRR15209118/SRR15209118_1.fastq.gz 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/018/SRR15209118/SRR15209118_2.fastq.gz 
+ 
+# SAMPLE 8: Map_22 (SRR15209118) - COMPLETED Sun 03/15/2026 18:06:32.26 
+File 1: 8.88 MB 
+File 2: 8.87 MB 
+ 
+# SAMPLE 9: Map_21 (SRR15209117) - Started Sun 03/15/2026 18:07:06.13 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/017/SRR15209117/SRR15209117_1.fastq.gz 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/017/SRR15209117/SRR15209117_2.fastq.gz 
+ 
+# SAMPLE 9: Map_21 (SRR15209117) - COMPLETED Sun 03/15/2026 18:07:52.40 
+File 1: 7.75 MB 
+File 2: 8.01 MB 
+ 
+# SAMPLE 10: Map_20 (SRR15209116) - Started Sun 03/15/2026 18:09:15.96 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/016/SRR15209116/SRR15209116_1.fastq.gz 
+curl -O https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR152/016/SRR15209116/SRR15209116_2.fastq.gz 
+ 
+# SAMPLE 10: Map_20 (SRR15209116) - COMPLETED Sun 03/15/2026 18:10:27.39 
+File sizes as they appear 
+ 
+# SAMPLE 10: Map_20 (SRR15209116) - COMPLETED Sun 03/15/2026 18:10:48.59 
+File 1: 8,015,730 bytes 
+File 2: 8,425,908 bytes 
+ 
