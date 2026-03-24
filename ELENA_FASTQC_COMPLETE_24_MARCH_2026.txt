@@ -1,0 +1,31 @@
+# ELENA LUKHERE - COMPLETE FASTQC COMMANDS - 24 MARCH 2026
+# ==========================================================
+# These are ALL the FastQC commands I ran on 24 March 2026
+# for quality control of 10 Mozambique gut metagenome samples
+# ==========================================================
+
+# 1. INSTALL FASTQC
+sudo apt update
+sudo apt install fastqc -y
+fastqc --version
+
+# 2. NAVIGATE TO FASTQ FILES
+cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
+ls -la *.fastq.gz
+
+# 3. CREATE RESULTS FOLDER
+mkdir -p /mnt/c/Users/User/metagenomics_project/fastqc_results
+
+# 4. TEST FASTQC ON ONE SAMPLE
+fastqc SRR15209125_1.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/
+
+# 5. RUN FASTQC ON ALL 20 FILES
+fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4
+
+# 6. VERIFY RESULTS
+cd /mnt/c/Users/User/metagenomics_project/fastqc_results/
+ls -la *.html
+ls -la *.html | wc -l
+
+# 7. VIEW RESULTS
+explorer.exe .
