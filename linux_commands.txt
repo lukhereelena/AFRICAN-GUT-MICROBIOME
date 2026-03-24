@@ -1,108 +1,23 @@
-# COMPLETE LINUX COMMANDS - FASTQC ANALYSIS
-# Date: March 16, 2026
-# Ubuntu 24.04 LTS on WSL2
-============================================
-
-# 1. CHECK FASTQC INSTALLATION
-----------------------------------------
-fastqc --version
-# Output: FastQC v0.12.1
-
-
-# 2. NAVIGATE TO FASTQ FILES
-----------------------------------------
+# FASTQC ANALYSIS - March 16, 2026
+========================================
+# Navigate to FASTQ files
 cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
 
-
-# 3. VERIFY ALL FILES ARE PRESENT
-----------------------------------------
-ls -la *.fastq.gz
-# Output shows 20 files (10 samples with _1 and _2):
-# SRR15209116_1.fastq.gz (7.6 MB)
-# SRR15209116_2.fastq.gz (8.0 MB)
-# SRR15209117_1.fastq.gz (7.8 MB)
-# SRR15209117_2.fastq.gz (8.0 MB)
-# SRR15209118_1.fastq.gz (8.9 MB)
-# SRR15209118_2.fastq.gz (8.9 MB)
-# SRR15209119_1.fastq.gz (9.6 MB)
-# SRR15209119_2.fastq.gz (9.9 MB)
-# SRR15209120_1.fastq.gz (9.6 MB)
-# SRR15209120_2.fastq.gz (10.1 MB)
-# SRR15209121_1.fastq.gz (4.8 MB)
-# SRR15209121_2.fastq.gz (5.1 MB)
-# SRR15209122_1.fastq.gz (6.7 MB)
-# SRR15209122_2.fastq.gz (7.3 MB)
-# SRR15209123_1.fastq.gz (10.5 MB)
-# SRR15209123_2.fastq.gz (11.5 MB)
-# SRR15209124_1.fastq.gz (3.7 MB)
-# SRR15209124_2.fastq.gz (3.8 MB)
-# SRR15209125_1.fastq.gz (509 MB)
-# SRR15209125_2.fastq.gz (527 MB)
-
-
-# 4. CREATE OUTPUT FOLDER FOR RESULTS
-----------------------------------------
-mkdir -p /mnt/c/Users/User/metagenomics_project/fastqc_results
-
-
-# 5. RUN FASTQC ON TEST SAMPLE (SRR15209125_1)
-----------------------------------------
+# Run FastQC on test sample
 fastqc SRR15209125_1.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/
 
-# Progress output:
-# Started analysis of SRR15209125_1.fastq.gz
-# Approx 5% complete... through 100%
+# Output showed successful completion with progress indicators
 # Analysis complete for SRR15209125_1.fastq.gz
 
+# FastQC completed on all 20 files - Tue Mar 24 09:51:46 +07 2026
+fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4
+Results: 20 HTML reports generated
 
-# 6. NAVIGATE TO RESULTS FOLDER
-----------------------------------------
-cd /mnt/c/Users/User/metagenomics_project/fastqc_results/
-ls -la
-# Output shows:
-# SRR15209125_1_fastqc.html (570 KB)
-# SRR15209125_1_fastqc.zip (320 KB)
+# FastQC completed on all 20 files - Tue Mar 24 09:53:09 +07 2026
+fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4
+Result: 20 HTML reports generated
 
-
-# 7. VIEW HTML REPORT IN WINDOWS
-----------------------------------------
-explorer.exe .
-
-
-# 8. CREATE SUMMARY FILE FOR TEST SAMPLE
-----------------------------------------
-cd /mnt/c/Users/User/metagenomics_project
-nano fastqc_results_summary.txt
-# Created summary with:
-# - Total Sequences: 6,126,309
-# - Total Bases: 899.3 Mbp
-# - GC Content: 47%
-# - Quality: GOOD (all PASS with normal warnings)
-
-
-# 9. VERIFY ALL PROJECT FILES
-----------------------------------------
-ls -la
-# Output shows:
-# commands.txt
-# complete_command_history.txt
-# data/
-# fastqc_results/
-# fastqc_results_summary.txt
-# linux_commands.txt
-# sample_progress.csv
-# sample_progress_clean.csv
-
-
-============================================
-# SUMMARY:
-# - 10 samples (20 FASTQ files) downloaded
-# - Test FastQC completed on SRR15209125_1
-# - Results show GOOD quality
-# - Ready to run FastQC on all remaining samples
-#
-# NEXT COMMAND (to run on all files):
-# cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
-# fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4
-============================================
+# FastQC completed on all 20 files - Tue Mar 24 09:53:30 +07 2026
+fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4
+Result: 20 HTML reports generated
 
