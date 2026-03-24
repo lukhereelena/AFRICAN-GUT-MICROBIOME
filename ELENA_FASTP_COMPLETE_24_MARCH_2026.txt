@@ -1,0 +1,57 @@
+# ELENA LUKHERE - COMPLETE FASTP COMMANDS - 24 MARCH 2026
+# =========================================================
+# These are ALL the Fastp trimming commands I ran on 24 March 2026
+# for quality trimming of 10 Mozambique gut metagenome samples
+# =========================================================
+
+# 1. INSTALL FASTP
+sudo apt update
+sudo apt install fastp -y
+fastp --version
+
+# 2. CREATE OUTPUT FOLDERS
+mkdir -p /mnt/c/Users/User/metagenomics_project/trimmed
+mkdir -p /mnt/c/Users/User/metagenomics_project/fastp_reports
+
+# 3. TEST FASTP ON LARGEST SAMPLE
+fastp -i SRR15209125_1.fastq.gz -I SRR15209125_2.fastq.gz \
+      -o /mnt/c/Users/User/metagenomics_project/trimmed/SRR15209125_1_trimmed.fastq.gz \
+      -O /mnt/c/Users/User/metagenomics_project/trimmed/SRR15209125_2_trimmed.fastq.gz \
+      --html /mnt/c/Users/User/metagenomics_project/fastp_reports/SRR15209125_fastp.html \
+      --json /mnt/c/Users/User/metagenomics_project/fastp_reports/SRR15209125_fastp.json
+
+# 4. RUN FASTP ON ALL 10 SAMPLES
+for sample in SRR15209116 SRR15209117 SRR15209118 SRR15209119 SRR15209120 \
+              SRR15209121 SRR15209122 SRR15209123 SRR15209124 SRR15209125; do
+    echo "Processing $sample..."
+    fastp -i ${sample}_1.fastq.gz -I ${sample}_2.fastq.gz \
+          -o /mnt/c/Users/User/metagenomics_project/trimmed/${sample}_1_trimmed.fastq.gz \
+          -O /mnt/c/Users/User/metagenomics_project/trimmed/${sample}_2_trimmed.fastq.gz \
+          --html /mnt/c/Users/User/metagenomics_project/fastp_reports/${sample}_fastp.html \
+          --json /mnt/c/Users/User/metagenomics_project/fastp_reports/${sample}_fastp.json
+done
+
+# 5. VERIFY RESULTS
+ls -la /mnt/c/Users/User/metagenomics_project/trimmed/
+ls -la /mnt/c/Users/User/metagenomics_project/fastp_reports/
+
+# 6. VIEW REPORTS
+explorer.exe /mnt/c/Users/User/metagenomics_project/fastp_reports/
+
+# 4. RUN FASTP ON ALL 10 SAMPLES
+for sample in SRR15209116 SRR15209117 SRR15209118 SRR15209119 SRR15209120 \
+              SRR15209121 SRR15209122 SRR15209123 SRR15209124 SRR15209125; do
+    echo "Processing $sample..."
+    fastp -i ${sample}_1.fastq.gz -I ${sample}_2.fastq.gz \
+          -o /mnt/c/Users/User/metagenomics_project/trimmed/${sample}_1_trimmed.fastq.gz \
+          -O /mnt/c/Users/User/metagenomics_project/trimmed/${sample}_2_trimmed.fastq.gz \
+          --html /mnt/c/Users/User/metagenomics_project/fastp_reports/${sample}_fastp.html \
+          --json /mnt/c/Users/User/metagenomics_project/fastp_reports/${sample}_fastp.json
+done
+
+# 5. VERIFY RESULTS
+ls -la /mnt/c/Users/User/metagenomics_project/trimmed/ | wc -l
+ls -la /mnt/c/Users/User/metagenomics_project/fastp_reports/ | wc -l
+
+# 6. VIEW REPORTS
+explorer.exe /mnt/c/Users/User/metagenomics_project/fastp_reports/
