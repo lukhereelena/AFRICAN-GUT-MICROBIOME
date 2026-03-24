@@ -1,0 +1,103 @@
+    1  # Check your Ubuntu version and how it's running
+    2  cat /etc/os-release
+    3  # If you're in WSL, this command will show "microsoft" or "WSL"
+    4  uname -a
+    5  sudo apt update
+    6  sudo apt install fastqc -y
+    7  fastqc --version
+    8  cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
+    9  ls -la *.fastq.gz
+   10  mkdir -p /mnt/c/Users/User/metagenomics_project/fastqc_results
+   11  fastqc SRR15209125_1.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/
+   12  cd /mnt/c/Users/User/metagenomics_project
+   13  nano linux_commands.txt
+   14  # Look at your project folder
+   15  ls -la
+   16  # You should see:
+   17  # - linux_commands.txt (the file you just saved)
+   18  # - commands.txt
+   19  # - sample_progress_clean.csv
+   20  # - fastqc_results/ (folder)
+   21  # Go to the FastQC results folder
+   22  cd fastqc_results/
+   23  ls -la
+   24  # Open Windows Explorer to see the HTML report
+   25  explorer.exe .
+   26  cd /mnt/c/Users/User/metagenomics_project
+   27  nano fastqc_results_summary.txt
+   28  cd /mnt/c/Users/User/metagenomics_project
+   29  ls -la
+   30  git add linux_commands.txt
+   31  cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
+   32  # List all your FASTQ files
+   33  ls -la *.fastq.gz
+   34  # Check what's already in your FastQC results folder
+   35  ls /mnt/c/Users/User/metagenomics_project/fastqc_results/
+   36  cd /mnt/c/Users/User/metagenomics_project/fastqc_results/
+   37  ls -la
+   38  cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
+   39  fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4
+   40  cd /mnt/c/Users/User/metagenomics_project
+   41  # Add the FastQC command to your linux_commands.txt
+   42  echo "# FastQC completed on all 20 files - $(date)" >> linux_commands.txt
+   43  echo "fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4" >> linux_commands.txt
+   44  echo "Result: 20 HTML reports generated" >> linux_commands.txt
+   45  echo "" >> linux_commands.txt
+   46  cd /mnt/c/Users/User/metagenomics_project
+   47  # Add the FastQC command to your linux_commands.txt
+   48  echo "# FastQC completed on all 20 files - $(date)" >> linux_commands.txt
+   49  echo "fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4" >> linux_commands.txt
+   50  echo "Result: 20 HTML reports generated" >> linux_commands.txt
+   51  echo "" >> linux_commands.txt
+   52  cat linux_commands.txt
+   53  # Install fastp
+   54  sudo apt update
+   55  sudo apt install fastp -y
+   56  # Verify installation
+   57  fastp --version
+   58  cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
+   59  # Test on your largest sample first
+   60  fastp -i SRR15209125_1.fastq.gz -I SRR15209125_2.fastq.gz       -o /mnt/c/Users/User/metagenomics_project/trimmed/SRR15209125_1_trimmed.fastq.gz       -O /mnt/c/Users/User/metagenomics_project/trimmed/SRR15209125_2_trimmed.fastq.gz       --html /mnt/c/Users/User/metagenomics_project/fastp_reports/SRR15209125_fastp.html       --json /mnt/c/Users/User/metagenomics_project/fastp_reports/SRR15209125_fastp.json
+   61  cd /mnt/c/Users/User/metagenomics_project
+   62  # Create the folders
+   63  mkdir -p trimmed
+   64  mkdir -p fastp_reports
+   65  # Verify they exist
+   66  ls -la
+   67  cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
+   68  fastp -i SRR15209125_1.fastq.gz -I SRR15209125_2.fastq.gz       -o /mnt/c/Users/User/metagenomics_project/trimmed/SRR15209125_1_trimmed.fastq.gz       -O /mnt/c/Users/User/metagenomics_project/trimmed/SRR15209125_2_trimmed.fastq.gz       --html /mnt/c/Users/User/metagenomics_project/fastp_reports/SRR15209125_fastp.html       --json /mnt/c/Users/User/metagenomics_project/fastp_reports/SRR15209125_fastp.json
+   69  # Check your trimmed files
+   70  ls -la /mnt/c/Users/User/metagenomics_project/trimmed/
+   71  # Check your reports
+   72  ls -la /mnt/c/Users/User/metagenomics_project/fastp_reports/
+   73  cd /mnt/c/Users/User/metagenomics_project/data/raw_fastq
+   74  # Loop through all samples (this will process all 10, but will skip/reprocess SRR15209125)
+   75  for sample in SRR15209116 SRR15209117 SRR15209118 SRR15209119 SRR15209120               SRR15209121 SRR15209122 SRR15209123 SRR15209124 SRR15209125; do     echo "=========================================";     echo "Processing $sample...";     echo "=========================================";     fastp -i ${sample}_1.fastq.gz -I ${sample}_2.fastq.gz           -o /mnt/c/Users/User/metagenomics_project/trimmed/${sample}_1_trimmed.fastq.gz           -O /mnt/c/Users/User/metagenomics_project/trimmed/${sample}_2_trimmed.fastq.gz           --html /mnt/c/Users/User/metagenomics_project/fastp_reports/${sample}_fastp.html           --json /mnt/c/Users/User/metagenomics_project/fastp_reports/${sample}_fastp.json; done
+   76  # Check trimmed files
+   77  ls -la /mnt/c/Users/User/metagenomics_project/trimmed/
+   78  # Check Fastp reports
+   79  ls -la /mnt/c/Users/User/metagenomics_project/fastp_reports/
+   80  cd /mnt/c/Users/User/metagenomics_project
+   81  # Save complete command history
+   82  history > complete_linux_history_$(date +%Y%m%d).txt
+   83  cd /mnt/c/Users/User/metagenomics_project
+   84  # Save your command history
+   85  history > complete_linux_history_$(date +%Y%m%d).txt
+   86  # Add the Fastp loop to linux_commands.txt
+   87  echo "" >> linux_commands.txt
+   88  echo "# Fastp trimming completed on all 10 samples - $(date)" >> linux_commands.txt
+   89  echo "for sample in SRR15209116 SRR15209117 SRR15209118 SRR15209119 SRR15209120 SRR15209121 SRR15209122 SRR15209123 SRR15209124 SRR15209125; do
+    fastp -i \${sample}_1.fastq.gz -I \${sample}_2.fastq.gz \\
+          -o trimmed/\${sample}_1_trimmed.fastq.gz \\
+          -O trimmed/\${sample}_2_trimmed.fastq.gz \\
+          --html fastp_reports/\${sample}_fastp.html \\
+          --json fastp_reports/\${sample}_fastp.json
+done" >> linux_commands.txt
+   90  history
+   91  history > /mnt/c/Users/User/metagenomics_project/my_actual_linux_commands.txt
+   92  cat /mnt/c/Users/User/metagenomics_project/my_actual_linux_commands.txt
+   93  cd /mnt/c/Users/User/metagenomics_project
+   94  echo "" >> linux_commands.txt
+   95  echo "# MY ACTUAL COMMANDS - $(date)" >> linux_commands.txt
+   96  history >> linux_commands.txt
+   97  history > /mnt/c/Users/User/metagenomics_project/ELENA_24_MARCH_2026.txt
