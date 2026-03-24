@@ -21,3 +21,14 @@ Result: 20 HTML reports generated
 fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4
 Result: 20 HTML reports generated
 
+# Fastp trimming on SRR15209125 - Tue Mar 24 10:47:37 +07 2026
+fastp -i SRR15209125_1.fastq.gz -I SRR15209125_2.fastq.gz       -o trimmed/SRR15209125_1_trimmed.fastq.gz       -O trimmed/SRR15209125_2_trimmed.fastq.gz       --html fastp_reports/SRR15209125_fastp.html       --json fastp_reports/SRR15209125_fastp.json
+
+# Fastp trimming completed on all 10 samples - Tue Mar 24 10:56:35 +07 2026
+for sample in SRR15209116 SRR15209117 SRR15209118 SRR15209119 SRR15209120 SRR15209121 SRR15209122 SRR15209123 SRR15209124 SRR15209125; do
+    fastp -i ${sample}_1.fastq.gz -I ${sample}_2.fastq.gz \
+          -o trimmed/${sample}_1_trimmed.fastq.gz \
+          -O trimmed/${sample}_2_trimmed.fastq.gz \
+          --html fastp_reports/${sample}_fastp.html \
+          --json fastp_reports/${sample}_fastp.json
+done
