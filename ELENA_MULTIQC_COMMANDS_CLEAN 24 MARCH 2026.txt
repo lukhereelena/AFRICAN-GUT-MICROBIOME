@@ -1,0 +1,17 @@
+pip install multiqc
+multiqc . -o /mnt/c/Users/User/metagenomics_project/multiqc_fastqc_report/
+pip3 install multiqc
+pipx install multiqc
+multiqc --version
+multiqc . -o /mnt/c/Users/User/metagenomics_project/multiqc_fastqc_report/
+/mnt/c/Users/User/metagenomics_project/multiqc_fastqc_report/multiqc_report.html
+multiqc . -o /mnt/c/Users/User/metagenomics_project/multiqc_fastp_report/
+echo "pipx install multiqc" >> ELENA_MULTIQC_24_MARCH_2026.txt
+echo "multiqc --version" >> ELENA_MULTIQC_24_MARCH_2026.txt
+echo "multiqc . -o /mnt/c/Users/User/metagenomics_project/multiqc_fastqc_report/" >> ELENA_MULTIQC_24_MARCH_2026.txt
+echo "multiqc . -o /mnt/c/Users/User/metagenomics_project/multiqc_fastp_report/" >> ELENA_MULTIQC_24_MARCH_2026.txt
+echo "multiqc . -o /mnt/c/Users/User/metagenomics_project/multiqc_fastqc_report/" >> ELENA_MULTIQC_COMMANDS_24_MARCH_2026.txt
+echo "multiqc . -o /mnt/c/Users/User/metagenomics_project/multiqc_fastp_report/" >> ELENA_MULTIQC_COMMANDS_24_MARCH_2026.txt
+history | grep multiqc
+history | grep multiqc >> MY_MULTIQC_COMMANDS.txt
+history | grep multiqc | sed 's/^[ ]*[0-9]*[ ]*//' > MY_MULTIQC_COMMANDS_CLEAN.txt
