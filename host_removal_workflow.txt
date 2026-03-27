@@ -1,0 +1,52 @@
+# Host Read Removal Workflow - March 27, 2026
+
+## 1. Check Memory
+free -h
+
+## 2. Install Bowtie2
+sudo apt-get update
+sudo apt-get install bowtie2 -y
+
+## 3. Run Host Removal for Each Sample
+
+### Sample SRR15209116
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209116_1_trimmed.fastq.gz -2 trimmed/SRR15209116_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209116_nonhuman_%.fastq.gz -S results/host_removed/SRR15209116_aligned.sam
+
+### Sample SRR15209117
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209117_1_trimmed.fastq.gz -2 trimmed/SRR15209117_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209117_nonhuman_%.fastq.gz -S results/host_removed/SRR15209117_aligned.sam
+
+### Sample SRR15209118
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209118_1_trimmed.fastq.gz -2 trimmed/SRR15209118_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209118_nonhuman_%.fastq.gz -S results/host_removed/SRR15209118_aligned.sam
+
+### Sample SRR15209119
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209119_1_trimmed.fastq.gz -2 trimmed/SRR15209119_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209119_nonhuman_%.fastq.gz -S results/host_removed/SRR15209119_aligned.sam
+
+### Sample SRR15209120
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209120_1_trimmed.fastq.gz -2 trimmed/SRR15209120_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209120_nonhuman_%.fastq.gz -S results/host_removed/SRR15209120_aligned.sam
+
+### Sample SRR15209121
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209121_1_trimmed.fastq.gz -2 trimmed/SRR15209121_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209121_nonhuman_%.fastq.gz -S results/host_removed/SRR15209121_aligned.sam
+
+### Sample SRR15209122
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209122_1_trimmed.fastq.gz -2 trimmed/SRR15209122_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209122_nonhuman_%.fastq.gz -S results/host_removed/SRR15209122_aligned.sam
+
+### Sample SRR15209123
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209123_1_trimmed.fastq.gz -2 trimmed/SRR15209123_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209123_nonhuman_%.fastq.gz -S results/host_removed/SRR15209123_aligned.sam
+
+### Sample SRR15209124
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209124_1_trimmed.fastq.gz -2 trimmed/SRR15209124_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209124_nonhuman_%.fastq.gz -S results/host_removed/SRR15209124_aligned.sam
+
+### Sample SRR15209125
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209125_1_trimmed.fastq.gz -2 trimmed/SRR15209125_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209125_nonhuman_%.fastq.gz -S results/host_removed/SRR15209125_aligned.sam
+
+## 4. Copy All Non-Human Reads to Cleaned Folder
+cp results/host_removed/*_nonhuman_*.fastq.gz data/cleaned/
+
+## 5. Verify Results
+ls -lh data/cleaned/
+ls data/cleaned/*.fastq.gz | wc -l
+du -sh data/cleaned/
+
+## Results:
+- 20 files total (2 per sample × 10 samples)
+- 1.2G total size

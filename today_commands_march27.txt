@@ -1,0 +1,151 @@
+    1  ls
+    2  cd ..
+    3  ls
+    4  cd ellena/
+    5  ls
+    6  clear
+    7  pwd
+    8  ls
+    9  cd Ellena
+   10  ls
+   11  cd /mnt
+   12  ls
+   13  cd
+   14  cd..
+   15  clear
+   16  ls
+   17  ls- l
+   18  ls -l
+   19  ls -lt
+   20  ls -al
+   21  ls
+   22  pwd
+   23  ls
+   24  mkdir Ellena
+   25  ls
+   26  cd Ellena
+   27  pwd
+   28  cd..
+   29  cd
+   30  cd/
+   31  q
+   32  kdkjflajfks
+   33  pwd
+   34  ls
+   35  cd/usr/bin
+   36  history
+   37  pwd
+   38  cat ~/.bash_history
+   39  history | less
+   40  # Go to the results folder
+   41  cd /mnt/c/Users/User/metagenomics_project/fastqc_results/
+   42  # List HTML files (shows what's done)
+   43  ls -la *.html
+   44  cd /mnt/c/Users/User/metagenomics_project
+   45  echo "# FastQC completed on all 20 files - $(date)" >> linux_commands.txt
+   46  echo "fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4" >> linux_commands.txt
+   47  echo "Results: 20 HTML reports generated" >> linux_commands.txt
+   48  echo "" >> linux_commands.txt
+   49  history > complete_linux_history_$(date +%Y%m%d).txt
+   50  ls -la *.txt
+   51  cd /mnt/c/Users/User/metagenomics_project
+   52  echo "# Fastp trimming on SRR15209125 - $(date)" >> linux_commands.txt
+   53  echo "fastp -i SRR15209125_1.fastq.gz -I SRR15209125_2.fastq.gz \
+   54        -o trimmed/SRR15209125_1_trimmed.fastq.gz \
+   55        -O trimmed/SRR15209125_2_trimmed.fastq.gz \
+   56        --html fastp_reports/SRR15209125_fastp.html \
+   57        --json fastp_reports/SRR15209125_fastp.json" >> linux_commands.txt
+   58  # Check if bowtie2 is running
+   59  ps aux | grep bowtie2
+   60  ls -la bowtie2_output/
+   61  cd /mnt/c/Users/User/metagenomics_project/databases/human_genome/
+   62  ls -la *.bt2
+   63  ls -la /mnt/c/Users/User/metagenomics_project/bowtie2_output/
+   64  ps aux | grep bowtie2
+   65  # Check if the process is running
+   66  ps aux | grep bowtie2
+   67  # Watch the output directory
+   68  watch -n 2 ls -la results/host_removed/
+   69  cd /mnt/c/Users/User/metagenomics_project
+   70  ls -lh results/host_removed/
+   71  cat results/host_removed/SRR15209116_bowtie2.log
+   72  exit
+   73  cd /mnt/c/Users/User/metagenomics_project
+   74  watch -n 3 ls -lh results/host_removed/
+   75  cat results/host_removed/SRR15209116_bowtie2.log
+   76  ps aux | grep bowtie2
+   77  apt-get update && apt-get install bowtie2 -y
+   78  sudo apt-get update
+   79  sudo apt-get install bowtie2 -y
+   80  bowtie2 --version
+   81  cd /mnt/c/Users/User/metagenomics_project
+   82  rm -f results/host_removed/SRR15209116*
+   83  bowtie2 -p 2     -x databases/human_genome/hg_39     -1 trimmed/SRR15209116_1_trimmed.fastq.gz     -2 trimmed/SRR15209116_2_trimmed.fastq.gz     --un-conc-gz results/host_removed/SRR15209116_nonhuman_%.fastq.gz     -S results/host_removed/SRR15209116_aligned.sam
+   84  # Create directory for cleaned reads
+   85  mkdir -p data/cleaned
+   86  # Copy the first sample's non-human reads
+   87  cp results/host_removed/SRR15209116_nonhuman_*.fastq.gz data/cleaned/
+   88  # Process all remaining samples
+   89  for r1 in trimmed/*_1_trimmed.fastq.gz; do     sample=$(basename $r1 _1_trimmed.fastq.gz)         if [ "$sample" == "SRR15209116" ]; then         continue;     fi         echo "=========================================";     echo "Processing: $sample";     echo "========================================="         bowtie2 -p 2         -x databases/human_genome/hg_39         -1 trimmed/${sample}_1_trimmed.fastq.gz         -2 trimmed/${sample}_2_trimmed.fastq.gz         --un-conc-gz results/host_removed/${sample}_nonhuman_%.fastq.gz         -S results/host_removed/${sample}_aligned.sam         cp results/host_removed/${sample}_nonhuman_*.fastq.gz data/cleaned/;     echo "✓ Done: $sample";     echo ""; donels results/host_removed/
+   90  # Sample 17
+   91  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209117_1_trimmed.fastq.gz -2 trimmed/SRR15209117_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209117_nonhuman_%.fastq.gz -S results/host_removed/SRR15209117_aligned.sam
+   92  cp results/host_removed/SRR15209117_nonhuman_*.fastq.gz data/cleaned/
+   93  for sample in SRR15209118 SRR15209119 SRR15209120 SRR15209121 SRR15209122 SRR15209123 SRR15209124 SRR15209125; do     echo "Processing $sample...";     bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/${sample}_1_trimmed.fastq.gz -2 trimmed/${sample}_2_trimmed.fastq.gz --un-conc-gz results/host_removed/${sample}_nonhuman_%.fastq.gz -S results/host_removed/${sample}_aligned.sam;     cp results/host_removed/${sample}_nonhuman_*.fastq.gz data/cleaned/;     echo "Done $sample"
+   94  for sample in SRR15209118 SRR15209119 SRR15209120; do     echo "=========================================";     echo "Processing: $sample";     echo "=========================================";     bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/${sample}_1_trimmed.fastq.gz -2 trimmed/${sample}_2_trimmed.fastq.gz --un-conc-gz results/host_removed/${sample}_nonhuman_%.fastq.gz -S results/host_removed/${sample}_aligned.sam;     cp results/host_removed/${sample}_nonhuman_*.fastq.gz data/cleaned/;     echo "✓ Done: $sample";     echo ""
+   95  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209118_1_trimmed.fastq.gz -2 trimmed/SRR15209118_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209118_nonhuman_%.fastq.gz -S results/host_removed/SRR15209118_aligned.sam
+   96  cp results/host_removed/SRR15209118_nonhuman_*.fastq.gz data/cleaned/
+   97  ls -lh data/cleaned/
+   98  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209119_1_trimmed.fastq.gz -2 trimmed/SRR15209119_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209119_nonhuman_%.fastq.gz -S results/host_removed/SRR15209119_aligned.sam
+   99  cp results/host_removed/SRR15209119_nonhuman_*.fastq.gz data/cleaned/
+  100  ls -lh data/cleaned/
+  101  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209120_1_trimmed.fastq.gz -2 trimmed/SRR15209120_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209120_nonhuman_%.fastq.gz -S results/host_removed/SRR15209120_aligned.sam
+  102  cp results/host_removed/SRR15209120_nonhuman_*.fastq.gz data/cleaned/
+  103  ls -lh data/cleaned/
+  104  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209121_1_trimmed.fastq.gz -2 trimmed/SRR15209121_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209121_nonhuman_%.fastq.gz -S results/host_removed/SRR15209121_aligned.sam
+  105  cp results/host_removed/SRR15209121_nonhuman_*.fastq.gz data/cleaned/
+  106  ls -lh data/cleaned/ | wc -l
+  107  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209122_1_trimmed.fastq.gz -2 trimmed/SRR15209122_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209122_nonhuman_%.fastq.gz -S results/host_removed/SRR15209122_aligned.sam
+  108  cp results/host_removed/SRR15209122_nonhuman_*.fastq.gz data/cleaned/
+  109  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209123_1_trimmed.fastq.gz -2 trimmed/SRR15209123_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209123_nonhuman_%.fastq.gz -S results/host_removed/SRR15209123_aligned.sam
+  110  cp results/host_removed/SRR15209123_nonhuman_*.fastq.gz data/cleaned/
+  111  ls -lh data/cleaned/ | grep SRR15209123
+  112  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209124_1_trimmed.fastq.gz -2 trimmed/SRR15209124_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209124_nonhuman_%.fastq.gz -S results/host_removed/SRR15209124_aligned.sam
+  113  cp results/host_removed/SRR15209124_nonhuman_*.fastq.gz data/cleaned/
+  114  bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SRR15209125_1_trimmed.fastq.gz -2 trimmed/SRR15209125_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SRR15209125_nonhuman_%.fastq.gz -S results/host_removed/SRR15209125_aligned.sam
+  115  cp results/host_removed/SRR15209125_nonhuman_*.fastq.gz data/cleaned/
+  116  # Check all files
+  117  ls -lh data/cleaned/
+  118  # Count files (should be 20)
+  119  ls data/cleaned/*.fastq.gz | wc -l
+  120  # See total size
+  121  du -sh data/cleaned/
+  122  history > /mnt/c/Users/User/Desktop/commands_history.txt
+  123  ls /mnt/c/Users/
+  124  ls -la /mnt/c/Users/User/ | grep Desktop
+  125  # Save command history
+  126  history > commands_history.txt
+  127  # Save project summary
+  128  cat > project_summary.txt << 'EOF'
+Metagenomics Host Removal Project
+Date: March 27, 2026
+
+Samples Processed (10 samples):
+SRR15209116, SRR15209117, SRR15209118, SRR15209119, SRR15209120,
+SRR15209121, SRR15209122, SRR15209123, SRR15209124, SRR15209125
+
+Results:
+- 20 microbiome read files (2 per sample)
+- Total size: 1.2G
+- Human read removal rate: 99%+ for most samples
+
+Commands used:
+bowtie2 -p 2 -x databases/human_genome/hg_39 -1 trimmed/SAMPLE_1_trimmed.fastq.gz -2 trimmed/SAMPLE_2_trimmed.fastq.gz --un-conc-gz results/host_removed/SAMPLE_nonhuman_%.fastq.gz -S results/host_removed/SAMPLE_aligned.sam
+
+Output: data/cleaned/ contains all non-human reads
+EOF
+
+  129  # Save file list
+  130  ls -la > file_list.txt
+  131  ls -lh *.txt
+  132  # Save last 200 commands (today's work)
+  133  history 200 > today_commands_march27.txt
