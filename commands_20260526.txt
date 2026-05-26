@@ -12,7 +12,7 @@
    80  su root
    81  whoami
    82  which bowtie2
-   83  echo "Elizabeth1998$$$$" | sudo -S apt-get update
+   83  echo "" | sudo -S apt-get update
    84  exit
    85  watch -n 5 'ls -lh /mnt/c/Users/User/metagenomics_project/databases/kraken2/k2_standard_20230314.tar.gz'
    86  ps aux | grep metaphlan
