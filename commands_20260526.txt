@@ -1,0 +1,100 @@
+   69  cd /mnt/c/Users/User/metagenomics_project
+   70  ls -lh results/host_removed/
+   71  cat results/host_removed/SRR15209116_bowtie2.log
+   72  exit
+   73  free -h
+   74  cd /mnt/c/Users/User/metagenomics_project
+   75  # Remove old incomplete files
+   76  rm -f results/host_removed/SRR15209116*
+   77  # Run bowtie2
+   78  bowtie2 -p 2     -x databases/human_genome/hg_39     -1 trimmed/SRR15209116_1_trimmed.fastq.gz     -2 trimmed/SRR15209116_2_trimmed.fastq.gz     --un-conc-gz results/host_removed/SRR15209116_nonhuman_%.fastq.gz     -S results/host_removed/SRR15209116_aligned.sam     2> results/host_removed/SRR15209116_bowtie2.log
+   79  sudo apt-get update
+   80  su root
+   81  whoami
+   82  which bowtie2
+   83  echo "Elizabeth1998$$$$" | sudo -S apt-get update
+   84  exit
+   85  watch -n 5 'ls -lh /mnt/c/Users/User/metagenomics_project/databases/kraken2/k2_standard_20230314.tar.gz'
+   86  ps aux | grep metaphlan
+   87  P-FEPS2N7:/mnt/c/Users/User$ ps aux | grep metaphlan
+   88  ellena      6649 12.3  2.1 374180 127408 pts/0   Dl+  14:36  23:02 /usr/bin/python3 /home/ellena/.local/bin/metaphlan --install --db_dir databases/metaphlan
+   89  ellena      7954  0.0  0.0   8168   660 pts/2    S+   17:42   0:00 grep --color=auto metaphlan
+   90  ellena@DESKTOP-FEPS2N7:/mnt/c/Users/User$ps aux | grep metaphlan
+   91  ps aux | grep metaphlan
+   92  df -h /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+   93  du -sh /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+   94  ps aux | grep metaphlan | grep -v grep
+   95  watch -n 10 'ps aux | grep metaphlan | grep -v grep'
+   96  ls -lt /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | head -10
+   97  ls -lh /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2 2>/dev/null | wc -l
+   98  watch -n 10 'ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2 2>/dev/null | wc -l'
+   99  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  100  tar -tvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar | head -20
+  101  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  102  tar -xvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar
+  103  fg
+  104  # Check if Kraken2 is installed
+  105  kraken2 --version
+  106  # Check if Bracken is installed
+  107  bracken -v
+  108  # Check if MetaPhlAn4 is installed
+  109  metaphlan --version
+  110  # Install Kraken2
+  111  sudo apt-get update
+  112  sudo apt-get install kraken2 -y
+  113  sudo apt-get install bracken -y
+  114  pip3 install metaphlan
+  115  # Install python3-pip first
+  116  sudo apt-get install python3-pip -y
+  117  pip3 install metaphlan
+  118  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  119  source ~/.bashrc
+  120  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  121  source ~/.bashrc
+  122  metaphlan --version
+  123  # Create database directory
+  124  mkdir -p /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  125  # Download database (this takes 30-60 minutes)
+  126  metaphlan --install --bowtie2db /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  127  cd /mnt/c/Users/User/metagenomics_project
+  128  # Download the database
+  129  metaphlan --install --db_dir databases/metaphlan
+  130  fg
+  131  watch -n 5 'ls -lh /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l 2>/dev/null | wc -l'
+  132  fg
+  133  watch -n 5 'ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2 2>/dev/null | wc -l'
+  134  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l | wc -l
+  135  cd /mnt/c/Users/User/metagenomics_project
+  136  echo ">test" > test.fasta
+  137  echo "ACGTACGTACGTACGT" >> test.fasta
+  138  metaphlan test.fasta --input_type fasta --db_dir databases/metaphlan
+  139  export METAPHLAN_DB=/mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  140  metaphlan --version
+  141  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | head -10
+  142  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  143  # Rename all .bt2l files to .bt2
+  144  for file in *.bt2l; do     mv "$file" "${file%.bt2l}.bt2"; done
+  145  # Verify the rename worked
+  146  ls *.bt2 | wc -l
+  147  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  148  mv mpa_vJan25_CHOCOPhlAnSGB_202503.rev.2.bt2l mpa_vJan25_CHOCOPhlAnSGB_202503.rev.2.bt2
+  149  ls -la *.bt2*
+  150  ls -la | grep rev.2
+  151  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  152  tar -xvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar --wildcards '*.rev.2.bt2l'
+  153  # Check Kraken2 files
+  154  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d 2>/dev/null | wc -l
+  155  # Check MetaPhlAn files
+  156  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l 2>/dev/null | wc -l
+  157  ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/
+  158  ls -lh /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | grep bt2l
+  159  ps aux | grep tar | grep -v grep
+  160  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  161  ls -lh *.bt2l 2>/dev/null
+  162  ps aux | grep "metaphlan" | grep -v grep
+  163  cd /mnt/c/Users/User/metagenomics_project
+  164  history > command_history_05262026.txt
+  165  ls -lh my_commands_*.txt
+  166  ls -lh command_history_05262026.txt
+  167  history | tail -100 > /mnt/c/Users/User/Desktop/commands_$(date +%Y%m%d).txt
+  168  history | tail -100 > commands_$(date +%Y%m%d).txt
