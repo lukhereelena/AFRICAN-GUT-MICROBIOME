@@ -1,0 +1,447 @@
+    1  ls
+    2  cd ..
+    3  ls
+    4  cd ellena/
+    5  ls
+    6  clear
+    7  pwd
+    8  ls
+    9  cd Ellena
+   10  ls
+   11  cd /mnt
+   12  ls
+   13  cd
+   14  cd..
+   15  clear
+   16  ls
+   17  ls- l
+   18  ls -l
+   19  ls -lt
+   20  ls -al
+   21  ls
+   22  pwd
+   23  ls
+   24  mkdir Ellena
+   25  ls
+   26  cd Ellena
+   27  pwd
+   28  cd..
+   29  cd
+   30  cd/
+   31  q
+   32  kdkjflajfks
+   33  pwd
+   34  ls
+   35  cd/usr/bin
+   36  history
+   37  pwd
+   38  cat ~/.bash_history
+   39  history | less
+   40  # Go to the results folder
+   41  cd /mnt/c/Users/User/metagenomics_project/fastqc_results/
+   42  # List HTML files (shows what's done)
+   43  ls -la *.html
+   44  cd /mnt/c/Users/User/metagenomics_project
+   45  echo "# FastQC completed on all 20 files - $(date)" >> linux_commands.txt
+   46  echo "fastqc *.fastq.gz -o /mnt/c/Users/User/metagenomics_project/fastqc_results/ -t 4" >> linux_commands.txt
+   47  echo "Results: 20 HTML reports generated" >> linux_commands.txt
+   48  echo "" >> linux_commands.txt
+   49  history > complete_linux_history_$(date +%Y%m%d).txt
+   50  ls -la *.txt
+   51  cd /mnt/c/Users/User/metagenomics_project
+   52  echo "# Fastp trimming on SRR15209125 - $(date)" >> linux_commands.txt
+   53  echo "fastp -i SRR15209125_1.fastq.gz -I SRR15209125_2.fastq.gz \
+   54        -o trimmed/SRR15209125_1_trimmed.fastq.gz \
+   55        -O trimmed/SRR15209125_2_trimmed.fastq.gz \
+   56        --html fastp_reports/SRR15209125_fastp.html \
+   57        --json fastp_reports/SRR15209125_fastp.json" >> linux_commands.txt
+   58  # Check if bowtie2 is running
+   59  ps aux | grep bowtie2
+   60  ls -la bowtie2_output/
+   61  cd /mnt/c/Users/User/metagenomics_project/databases/human_genome/
+   62  ls -la *.bt2
+   63  ls -la /mnt/c/Users/User/metagenomics_project/bowtie2_output/
+   64  ps aux | grep bowtie2
+   65  # Check if the process is running
+   66  ps aux | grep bowtie2
+   67  # Watch the output directory
+   68  watch -n 2 ls -la results/host_removed/
+   69  cd /mnt/c/Users/User/metagenomics_project
+   70  ls -lh results/host_removed/
+   71  cat results/host_removed/SRR15209116_bowtie2.log
+   72  exit
+   73  free -h
+   74  cd /mnt/c/Users/User/metagenomics_project
+   75  # Remove old incomplete files
+   76  rm -f results/host_removed/SRR15209116*
+   77  # Run bowtie2
+   78  bowtie2 -p 2     -x databases/human_genome/hg_39     -1 trimmed/SRR15209116_1_trimmed.fastq.gz     -2 trimmed/SRR15209116_2_trimmed.fastq.gz     --un-conc-gz results/host_removed/SRR15209116_nonhuman_%.fastq.gz     -S results/host_removed/SRR15209116_aligned.sam     2> results/host_removed/SRR15209116_bowtie2.log
+   79  sudo apt-get update
+   80  su root
+   81  whoami
+   82  which bowtie2
+   83  echo "Elizabeth1998$$$$" | sudo -S apt-get update
+   84  exit
+   85  watch -n 5 'ls -lh /mnt/c/Users/User/metagenomics_project/databases/kraken2/k2_standard_20230314.tar.gz'
+   86  ps aux | grep metaphlan
+   87  P-FEPS2N7:/mnt/c/Users/User$ ps aux | grep metaphlan
+   88  ellena      6649 12.3  2.1 374180 127408 pts/0   Dl+  14:36  23:02 /usr/bin/python3 /home/ellena/.local/bin/metaphlan --install --db_dir databases/metaphlan
+   89  ellena      7954  0.0  0.0   8168   660 pts/2    S+   17:42   0:00 grep --color=auto metaphlan
+   90  ellena@DESKTOP-FEPS2N7:/mnt/c/Users/User$ps aux | grep metaphlan
+   91  ps aux | grep metaphlan
+   92  df -h /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+   93  du -sh /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+   94  ps aux | grep metaphlan | grep -v grep
+   95  watch -n 10 'ps aux | grep metaphlan | grep -v grep'
+   96  ls -lt /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | head -10
+   97  ls -lh /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2 2>/dev/null | wc -l
+   98  watch -n 10 'ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2 2>/dev/null | wc -l'
+   99  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  100  tar -tvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar | head -20
+  101  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  102  tar -xvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar
+  103  fg
+  104  # Check if Kraken2 is installed
+  105  kraken2 --version
+  106  # Check if Bracken is installed
+  107  bracken -v
+  108  # Check if MetaPhlAn4 is installed
+  109  metaphlan --version
+  110  # Install Kraken2
+  111  sudo apt-get update
+  112  sudo apt-get install kraken2 -y
+  113  sudo apt-get install bracken -y
+  114  pip3 install metaphlan
+  115  # Install python3-pip first
+  116  sudo apt-get install python3-pip -y
+  117  pip3 install metaphlan
+  118  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  119  source ~/.bashrc
+  120  echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc
+  121  source ~/.bashrc
+  122  metaphlan --version
+  123  # Create database directory
+  124  mkdir -p /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  125  # Download database (this takes 30-60 minutes)
+  126  metaphlan --install --bowtie2db /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  127  cd /mnt/c/Users/User/metagenomics_project
+  128  # Download the database
+  129  metaphlan --install --db_dir databases/metaphlan
+  130  fg
+  131  watch -n 5 'ls -lh /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l 2>/dev/null | wc -l'
+  132  fg
+  133  cd /mnt/c/Users/User/metagenomics_project
+  134  ls -la
+  135  # Check if your cleaned microbiome reads are still there
+  136  ls -lh data/cleaned/
+  137  # Check if databases exist
+  138  ls -lh databases/
+  139  # Check results folder
+  140  ls -lh results/
+  141  ls -lh data/cleaned/
+  142  ls -lh databases/kraken2/
+  143  ls -lh databases/metaphlan/
+  144  kraken2 --db databases/kraken2 --help
+  145  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  146  tar -xvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar
+  147  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  148  tar -xzf k2_standard_20230314.tar.gz
+  149  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d 2>/dev/null | wc -l
+  150  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l 2>/dev/null | wc -l
+  151  watch -n 5 'ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l 2>/dev/null | wc -l'
+  152  metaphlan --version
+  153  metaphlan --version --db_dir /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  154  ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/
+  155  metaphlan --db_dir /mnt/c/Users/User/metagenomics_project/databases/metaphlan --help
+  156  cd /mnt/c/Users/User/metagenomics_project/databases
+  157  metaphlan --install --db_dir metaphlan --force_download
+  158  ps aux | grep metaphlan | grep -v grep
+  159  cd /mnt/c/Users/User/metagenomics_project
+  160  echo ">test" > test.fasta
+  161  echo "ACGTACGTACGTACGT" >> test.fasta
+  162  kraken2 --db databases/kraken2 --threads 2 test.fasta
+  163  ls -lh databases/kraken2/
+  164  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  165  tar -tzf k2_standard_20230314.tar.gz | head -20
+  166  cd /mnt/c/Users/User/metagenomics_project/databases
+  167  rm -rf kraken2
+  168  mkdir kraken2
+  169  cd kraken2
+  170  wget https://genome-idx.s3.amazonaws.com/kraken/k2_standard_20230314.tar.gz
+  171  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  172  tar -xzf k2_standard_20230314.tar.gz
+  173  kill 3659
+  174  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  175  tar -xzf k2_standard_20230314.tar.gz
+  176  ls -lh /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d 2>/dev/null | wc -l
+  177  ls -la /mnt/c/Users/User/metagenomics_project/databases/kraken2/ | grep k2d
+  178  ps aux | grep "tar -xzf" | grep -v grep
+  179  ls -la /mnt/c/Users/User/metagenomics_project/databases/kraken2/ | grep k2d | wc -l
+  180  ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | grep bt2l
+  181  ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | grep bt2l | wc -l
+  182  ellena@DESKTOP-FEPS2N7:/mnt/c/Users/User$ ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | grep bt2l | wc -l
+  183  6
+  184  ellena@DESKTOP-FEPS2N7:/mnt/c/Users/User$ metaphlan --version
+  185  MetaPhlAn version 4.2.4 (21 Oct 2025)
+  186  No complete MetaPhlAn Bowtie2 database found
+  187  ellena@DESKTOP-FEPS2N7:/mnt/c/Users/User$
+  188  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.pkl
+  189  kill 3922
+  190  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  191  metaphlan --install --db_dir . --force_download
+  192  metaphlan --version
+  193  export METAPHLAN_DB=/mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  194  metaphlan --version
+  195  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | head -10
+  196  cd /mnt/c/Users/User/metagenomics_project
+  197  echo ">test" > test.fasta
+  198  echo "ACGTACGTACGTACGT" >> test.fasta
+  199  metaphlan test.fasta --input_type fasta --db_dir /mnt/c/Users/User/metagenomics_project/databases/metaphlan --verbose
+  200  ls -lh /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d 2>/dev/null | wc -l
+  201  ps aux | grep "tar -xzf" | grep -v grep
+  202  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d | wc -l
+  203  metaphlan --version
+  204  ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | grep pkl
+  205  ps aux | grep metaphlan | grep -v grep
+  206  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.pkl
+  207  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  208  tar -xzf k2_standard_20230314.tar.gz
+  209  rm -f /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d
+  210  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  211  tar -xzf k2_standard_20230314.tar.gz
+  212  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2 | wc -l
+  213  metaphlan --version
+  214  export METAPHLAN_DB=/mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  215  metaphlan --version
+  216  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  217  for file in *.bt2; do mv "$file" "${file%.bt2}.bt2l"; done
+  218  metaphlan --version
+  219  cd /mnt/c/Users/User/metagenomics_project/databases && rm -rf metaphlan && metaphlan --install --db_dir metaphlan
+  220  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  221  tar -xvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar
+  222  watch -n 5 'ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2 2>/dev/null | wc -l'
+  223  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l | wc -l
+  224  cd /mnt/c/Users/User/metagenomics_project
+  225  echo ">test" > test.fasta
+  226  echo "ACGTACGTACGTACGT" >> test.fasta
+  227  metaphlan test.fasta --input_type fasta --db_dir databases/metaphlan
+  228  export METAPHLAN_DB=/mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  229  metaphlan --version
+  230  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | head -10
+  231  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  232  # Rename all .bt2l files to .bt2
+  233  for file in *.bt2l; do     mv "$file" "${file%.bt2l}.bt2"; done
+  234  # Verify the rename worked
+  235  ls *.bt2 | wc -l
+  236  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  237  mv mpa_vJan25_CHOCOPhlAnSGB_202503.rev.2.bt2l mpa_vJan25_CHOCOPhlAnSGB_202503.rev.2.bt2
+  238  ls -la *.bt2*
+  239  ls -la | grep rev.2
+  240  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  241  tar -xvf mpa_vJan25_CHOCOPhlAnSGB_202503_bt2.tar --wildcards '*.rev.2.bt2l'
+  242  # Check Kraken2 files
+  243  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d 2>/dev/null | wc -l
+  244  # Check MetaPhlAn files
+  245  ls /mnt/c/Users/User/metagenomics_project/databases/metaphlan/*.bt2l 2>/dev/null | wc -l
+  246  ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/
+  247  ls -lh /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | grep bt2l
+  248  ps aux | grep tar | grep -v grep
+  249  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  250  ls -lh *.bt2l 2>/dev/null
+  251  ps aux | grep "metaphlan" | grep -v grep
+  252  cd /mnt/c/Users/User/metagenomics_project
+  253  history > command_history_05262026.txt
+  254  ls -lh my_commands_*.txt
+  255  ls -lh command_history_05262026.txt
+  256  history | tail -100 > /mnt/c/Users/User/Desktop/commands_$(date +%Y%m%d).txt
+  257  history | tail -100 > commands_$(date +%Y%m%d).txt
+  258  ls -lh commands_*.txt
+  259  cd /mnt/c/Users/User/metagenomics_project
+  260  ls -lh databases/kraken2/*.k2d 2>/dev/null | wc -l
+  261  ls -lh databases/metaphlan/*.bt2l 2>/dev/null | wc -l
+  262  ls -lh databases/kraken2/*.k2d 2>/dev/null | wc -l
+  263  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  264  tar -xzf k2_standard_20230314.tar.gz
+  265  conda activate metaphlan
+  266  ~/miniconda3/bin/conda init
+  267  python3 --version
+  268  sudo add-apt-repository ppa:deadsnakes/ppa -y
+  269  sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+  270  sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 2
+  271  sudo update-alternatives --config python3
+  272  ls /usr/bin/python3*
+  273  sudo apt install python3.10 python3.10-venv python3.10-distutils -y
+  274  sudo add-apt-repository ppa:deadsnakes/ppa -y
+  275  sudo apt update
+  276  sudo apt install python3.10 python3.10-venv python3.10-distutils -y
+  277  apt list | grep python3.1 | head -20
+  278  conda activate metaphlan
+  279  conda create -n metaphlan python=3.10 -y
+  280  conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+  281  conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
+  282  conda create -n metaphlan python=3.10 -y
+  283  conda activate metaphlan
+  284  conda install -c bioconda metaphlan -y
+  285  cd /mnt/c/Users/User/metagenomics_project
+  286  export METAPHLAN_DB=/mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  287  metaphlan --version
+  288  ls -la /mnt/c/Users/User/metagenomics_project/databases/metaphlan/ | grep -E "pkl|bt2"
+  289  cd /mnt/c/Users/User/metagenomics_project/databases/metaphlan
+  290  metaphlan --install --db_dir . --force_download
+  291  # Step 1: Download and install Miniconda
+  292  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  293  bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda3
+  294  cd /mnt/c/Users/User/metagenomics_project/databases/kraken2
+  295  rm -f *.k2d
+  296  tar -xzf k2_standard_20230314.tar.gz
+  297  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d | wc -l
+  298  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.k2d
+  299  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/*.tar
+  300  ls /mnt/c/Users/User/metagenomics_project/databases/kraken2/ .k2d
+  301  # Check for the main functional results directory
+  302  ls -l results/humann/ 2>/dev/null && echo "--- Functional results found ---" || echo "No HUMAnN results directory found."
+  303  # If the directory exists, look for key output files
+  304  ls -l results/humann/*/pathabundance.tsv 2>/dev/null | head -5
+  305  # Look for common HUMAnN file patterns in the results folder
+  306  find results/ -name "*pathabundance*" -o -name "*genefamilies*" -o -name "*humann*" 2>/dev/null
+  307  # Search the last 500 commands for 'humann'
+  308  history 500 | grep -i humann
+  309  cd /mnt/c/Users/User/metagenomics_project
+  310  mkdir -p results/humann
+  311  for r1 in data/cleaned/*_nonhuman_1.fastq.gz; do     sample=$(basename $r1 _nonhuman_1.fastq.gz);     echo "Processing $sample...";     humann --input $r1 --output results/humann/$sample --threads 4; done
+  312  conda create -n meteor2 -c conda-forge -c bioconda meteor2
+  313  conda activate meteor2
+  314  # Activate base conda environment
+  315  conda activate base
+  316  # Install Leviathan
+  317  pip install leviathan
+  318  # Run on your samples
+  319  leviathan --input data/cleaned/ --output results/leviathan/ --db human_gut
+  320  python -m leviathan --input data/cleaned/ --output results/leviathan/ --db human_gut
+  321  ls /home/ellena/miniconda3/bin/ | grep leviathan
+  322  cd /mnt/c/Users/User/metagenomics_project
+  323  leviathan-profile-pathway.py     --input data/cleaned/     --output results/leviathan/     --db human_gut     --threads 4
+  324  ls /home/ellena/miniconda3/ | grep leviathan
+  325  # Check if pre-built index is available
+  326  wget https://github.com/jolespin/leviathan/releases/download/v1.0.0/leviathan_index_human_gut.tar.gz
+  327  tar -xzf leviathan_index_human_gut.tar.gz
+  328  conda create -n meteor2 -c conda-forge -c bioconda meteor2 python=3.10 -y
+  329  cd /mnt/c/Users/User/metagenomics_project
+  330  ls -lh data/cleaned/
+  331  ls -lh results/host_removed/*.log
+  332  cat results/host_removed/*.log | grep -E "aligned|overall"
+  333  find . -name "*.log" | grep -i bowtie
+  334  cat bowtie2_output/SRR15209125_bowtie2.log
+  335  # Check if non-human files have valid content
+  336  gunzip -c data/cleaned/SRR15209125_nonhuman_1.fastq.gz | head -4
+  337  which prefetch
+  338  sudo apt-get update
+  339  sudo apt-get install sra-toolkit -y
+  340  cd /tmp
+  341  wget https://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/3.0.0/sratoolkit.3.0.0-ubuntu64.tar.gz
+  342  tar -xzf sratoolkit.3.0.0-ubuntu64.tar.gz
+  343  sudo mv sratoolkit.3.0.0-ubuntu64 /usr/local/sratoolkit
+  344  echo 'export PATH=$PATH:/usr/local/sratoolkit/bin' >> ~/.bashrc
+  345  source ~/.bashrc
+  346  which prefetch
+  347  prefetch --version
+  348  vdb-config --interactive
+  349  prefetch --version
+  350  cd /mnt/c/Users/User/metagenomics_project
+  351  mkdir -p data/south_africa_raw
+  352  cat > south_africa_srr_list.txt << 'EOF'
+SRR17048881
+SRR17048885
+SRR17048888
+SRR17048932
+SRR17048935
+SRR17048938
+SRR17048941
+SRR17048944
+SRR17048947
+SRR17048950
+EOF
+
+  353  prefetch --option-file south_africa_srr_list.txt -O data/south_africa_raw/
+  354  rm -rf data/south_africa_raw/SRR17048881
+  355  cd /mnt/c/Users/User/metagenomics_project/data/south_africa_raw
+  356  fasterq-dump SRR17048881 --split-files --gzip -e 4
+  357  fasterq-dump SRR17048881 --split-files -e 4
+  358  wget ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR170/001/SRR17048881/SRR17048881_1.fastq.gz
+  359  cd /mnt/c/Users/User/metagenomics_project/data/south_africa_raw
+  360  # Use HTTPS instead of FTP
+  361  wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR170/001/SRR17048881/SRR17048881_1.fastq.gz
+  362  # After disconnecting VPN, test the connection
+  363  wget --spider https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR170/001/SRR17048881/SRR17048881_1.fastq.gz
+  364  cd /mnt/c/Users/User/metagenomics_project/data/south_africa_raw
+  365  # For SRR17048881, the correct URL is:
+  366  wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR170/008/SRR17048881/SRR17048881_1.fastq.gz
+  367  wget https://ftp.sra.ebi.ac.uk/vol1/fastq/SRR170/008/SRR17048881/SRR17048881_2.fastq.gz
+  368  pip install fastq-dl
+  369  cd /mnt/c/Users/User/metagenomics_project/data/south_africa_raw
+  370  fastq-dl --accession SRR17048881,SRR17048885,SRR17048888,SRR17048932,SRR17048935,SRR17048938,SRR17048941,SRR17048944,SRR17048947,SRR17048950 --provider ena --outdir .
+  371  for srr in SRR17048881 SRR17048885 SRR17048888 SRR17048932 SRR17048935 SRR17048938 SRR17048941 SRR17048944 SRR17048947 SRR17048950; do     echo "Downloading $srr...";     fastq-dl --accession $srr --provider ena --outdir .; done
+  372  ls -lh *.fastq.gz | wc -l
+  373  cd /mnt/c/Users/User/metagenomics_project
+  374  # Create directory for cleaned South African reads
+  375  mkdir -p data/south_africa_cleaned
+  376  for r1 in data/south_africa_raw/*_1.fastq.gz; do     sample=$(basename $r1 _1.fastq.gz);     r2="data/south_africa_raw/${sample}_2.fastq.gz"         echo "Processing $sample...";     bowtie2 -p 4         -x databases/human_genome/hg_39         -1 $r1         -2 $r2         --un-conc-gz data/south_africa_cleaned/${sample}_nonhuman_%.fastq.gz         -S results/host_removed_sa/${sample}_aligned.sam         2> results/host_removed_sa/${sample}_bowtie2.log         echo "Done: $sample"; done
+  377  mkdir -p results/host_removed_sa
+  378  for r1 in data/south_africa_raw/*_1.fastq.gz; do     sample=$(basename $r1 _1.fastq.gz);     r2="data/south_africa_raw/${sample}_2.fastq.gz"         echo "Processing $sample...";     bowtie2 -p 4         -x databases/human_genome/hg_39         -1 $r1         -2 $r2         --un-conc-gz data/south_africa_cleaned/${sample}_nonhuman_%.fastq.gz         -S results/host_removed_sa/${sample}_aligned.sam         2> results/host_removed_sa/${sample}_bowtie2.log         echo "Done: $sample"; done
+  379  mkdir -p qc_reports/south_africa_raw
+  380  for r1 in data/south_africa_raw/*_1.fastq.gz; do     sample=$(basename $r1 _1.fastq.gz);     echo "Running FastQC on $sample...";     fastqc $r1 -o qc_reports/south_africa_raw/;     fastqc data/south_africa_raw/${sample}_2.fastq.gz -o qc_reports/south_africa_raw/; done
+  381  sudo apt install fastqc -y
+  382  fastqc --version
+  383  mkdir -p qc_reports/south_africa_raw
+  384  for r1 in data/south_africa_raw/*_1.fastq.gz; do     sample=$(basename $r1 _1.fastq.gz);     echo "Running FastQC on $sample...";     fastqc $r1 -o qc_reports/south_africa_raw/;     fastqc data/south_africa_raw/${sample}_2.fastq.gz -o qc_reports/south_africa_raw/; done
+  385  ls -lh /mnt/c/Users/User/metagenomics_project/qc_reports/south_africa_raw/ | grep -c ".html"
+  386  mkdir -p data/south_africa_trimmed
+  387  mkdir -p qc_reports/south_africa_trimmed
+  388  for r1 in data/south_africa_raw/*_1.fastq.gz; do     sample=$(basename $r1 _1.fastq.gz);     r2="data/south_africa_raw/${sample}_2.fastq.gz"         echo "Trimming $sample...";     fastp -i $r1 -I $r2           -o data/south_africa_trimmed/${sample}_1_trimmed.fastq.gz           -O data/south_africa_trimmed/${sample}_2_trimmed.fastq.gz           --detect_adapter_for_pe           --cut_front --cut_tail           --html qc_reports/south_africa_trimmed/${sample}_fastp.html           --json qc_reports/south_africa_trimmed/${sample}_fastp.json         echo "Done: $sample"; done
+  389  sudo apt install fastp -y
+  390  for r1 in data/south_africa_raw/*_1.fastq.gz; do     sample=$(basename $r1 _1.fastq.gz);     r2="data/south_africa_raw/${sample}_2.fastq.gz"         echo "Trimming $sample...";     fastp -i $r1 -I $r2           -o data/south_africa_trimmed/${sample}_1_trimmed.fastq.gz           -O data/south_africa_trimmed/${sample}_2_trimmed.fastq.gz           --detect_adapter_for_pe           --cut_front --cut_tail           --html qc_reports/south_africa_trimmed/${sample}_fastp.html           --json qc_reports/south_africa_trimmed/${sample}_fastp.json         echo "Done: $sample"; done
+  391  ls -lh data/south_africa_trimmed/*.fastq.gz | wc -l
+  392  cat > README_south_africa_samples.md << 'EOF'
+# South African Gut Metagenome Samples
+
+
+## Overview
+
+10 shotgun metagenomic samples from South Africa (PRJNA678454) processed through the same pipeline as Mozambique samples.
+
+## Samples
+
+| Sample ID | Location | Cohort |
+|-----------|----------|--------|
+| SRR17048881 | South Africa | — |
+| SRR17048885 | South Africa | — |
+| SRR17048888 | South Africa | — |
+| SRR17048932 | South Africa | — |
+| SRR17048935 | South Africa | — |
+| SRR17048938 | South Africa | — |
+| SRR17048941 | South Africa | — |
+| SRR17048944 | South Africa | — |
+| SRR17048947 | South Africa | — |
+| SRR17048950 | South Africa | — |
+
+## Processing Steps Completed
+
+1. Raw data downloaded from ENA (fastq-dl)
+2. FastQC quality control
+3. Fastp adapter trimming and quality filtering
+
+## Processing Steps Pending
+
+1. MultiQC aggregation
+2. Host read removal (Bowtie2)
+3. Submission to Nephele for functional profiling
+
+## Commands Used
+
+See `south_africa_commands.txt`
+
+## Date
+
+June 16, 2026
+EOF
+
