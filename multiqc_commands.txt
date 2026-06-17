@@ -1,0 +1,9 @@
+  350  # Install MultiQC if not installed
+  351  pip install multiqc
+  352  # Run MultiQC on FastQC reports
+  353  multiqc qc_reports/south_africa_raw/ -o qc_reports/south_africa_multiqc/
+  354  # Run MultiQC on Fastp reports (optional, to combine)
+  355  multiqc qc_reports/south_africa_raw/ qc_reports/south_africa_trimmed/ -o qc_reports/south_africa_multiqc_combined/
+  360  ls -lh qc_reports/south_africa_multiqc_combined/
+  363  # Copy MultiQC report
+  364  cp qc_reports/south_africa_multiqc_combined/multiqc_report.html /mnt/d/github_upload_south_africa/
